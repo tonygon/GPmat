@@ -22,6 +22,10 @@ if nargin < 2
 end
 lbls = [];
 % Fix seeds
+% [st, i] = dbstack;
+% display([st.name]);
+% display([st.line]);
+disp(dataset);
 [points, pointNames] = mocapParseText([dataset ...
                     '.txt']);
 

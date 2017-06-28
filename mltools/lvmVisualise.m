@@ -108,6 +108,8 @@ if exist('varargin','var')
 else
    dim = model.d;
 end
+% TODO: check this hack
+dim = model.d; % My hack
 visData = zeros(1,dim);
 if(length(visualiseFunction)>4 & strcmp(visualiseFunction(1:5), 'image'))
   visData(1) = min(min(model.y));
