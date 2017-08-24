@@ -50,19 +50,20 @@ function [ax, data] = lvmScatterPlot(model, YLbls, ax, dims, defaultVals);
       symbol = getSymbols(size(YLbls,2));
     end
   end
+  n = 1000; % Added by tony
   x1Min = min(model.X(:, dims(1)));
   x1Max = max(model.X(:, dims(1)));
   x1Span = x1Max - x1Min;
   x1Min = x1Min - 0.05*x1Span;
   x1Max = x1Max + 0.05*x1Span;
-  x1 = linspace(x1Min, x1Max, 150);
+  x1 = linspace(x1Min, x1Max, n);
   
   x2Min = min(model.X(:, dims(2)));
   x2Max = max(model.X(:, dims(2)));
   x2Span = x2Max - x2Min;
   x2Min = x2Min - 0.05*x2Span;
   x2Max = x2Max + 0.05*x2Span;
-  x2 = linspace(x2Min, x2Max, 150);
+  x2 = linspace(x2Min, x2Max, n);
   
   %if size(model.X, 2)==2
     
@@ -115,10 +116,12 @@ function [ax, data] = lvmScatterPlot(model, YLbls, ax, dims, defaultVals);
       image(x1, x2, C);
     end
     
+%     display(colormap);
     %[c, h] = contourf(X1, X2, log10(reshape(1./varsigma(:, 1), size(X1))), 128); 
     % shading flat
-    colormap gray;
-    %colorbar
+%     colormap gray;
+%     h = colorbar
+%     set(h, 'Ylim', [0 1]);
   end
   
   data = lvmTwoDPlot(model.X(:, dims), YLbls, symbol);
