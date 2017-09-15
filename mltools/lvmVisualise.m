@@ -103,7 +103,7 @@ if length(visualiseFunction)>4 & strcmp(visualiseFunction(1:5), 'image') & ~isem
 else
   visualiseInfo.visualiseAxes =subplot(1, 1, 1);
 end
-if exist('varargin','var')
+if exist('varargin','var') && ~isempty(varargin)
    dim = varargin{1}(1)*varargin{1}(2);
 else
    dim = model.d;

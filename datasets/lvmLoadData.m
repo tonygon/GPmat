@@ -968,10 +968,7 @@ switch dataset
     otherwise % Custom dataset
         % Customdir is read from base workspace
         try
-            myDir = evalin('base','custom_dataset_dir');
-            Y = mocapLoadTextData([myDir dataset], 0);
-            Y = Y(1:8:end, :);
-            display('Loading custom dataset');
+            [Y, lbls] = loadCustomDataset(dataset);
         catch
             error('Unknown data set requested.')
         end
