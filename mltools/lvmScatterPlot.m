@@ -107,7 +107,7 @@ function [ax, data] = lvmScatterPlot(model, YLbls, ax, dims, defaultVals);
     C = C - min(min(C));
     if max(max(C))~=0
       C = C/max(max(C));
-      C = round(C*65);
+      C = (C*65);
       image(x1, x2, C);
     end
     
