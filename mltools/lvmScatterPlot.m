@@ -95,7 +95,7 @@ function [ax, data] = lvmScatterPlot(model, YLbls, ax, dims, defaultVals);
       figure(1)
       clf
       % Create the plot for the data
-      ax = axes('position', [0.05 0.05 0.9 0.9]);
+%       ax = axes('position', [0.05 0.05 0.9 0.9]);
     else
       axes(ax);
     end
@@ -103,6 +103,8 @@ function [ax, data] = lvmScatterPlot(model, YLbls, ax, dims, defaultVals);
     
     C = reshape(dataMaxProb, size(X1));
     
+    shading flat
+    colormap gray;
     % Rescale it
     C = C - min(min(C));
     if max(max(C))~=0
@@ -113,8 +115,6 @@ function [ax, data] = lvmScatterPlot(model, YLbls, ax, dims, defaultVals);
     
 %     display(colormap);
     %[c, h] = contourf(X1, X2, log10(reshape(1./varsigma(:, 1), size(X1))), 128); 
-    % shading flat
-%     colormap gray;
 %     h = colorbar
 %     set(h, 'Ylim', [0 1]);
   end
@@ -139,11 +139,15 @@ xLim = [min(x1) max(x1)];
 yLim = [min(x2) max(x2)];
 set(gca, 'xlim', xLim);
 set(gca, 'ylim', yLim);
+set(gca,'xtick',[]);
+set(gca,'ytick',[]);
 % if size(model.X, 2) == 3
 %   zLim = [min(x3) max(x3)];
 %   set(ax, 'zLim', zLim);
 % end
 set(gca, 'fontname', 'arial');
-set(gca, 'fontsize', 20);
-
+title('Latent Space');
+xlabel('1st latent component');
+ylabel('2nd latent component');
+set(gca, 'fontsize', 15);
 ax = gca;
